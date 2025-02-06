@@ -21,11 +21,11 @@ func update_state(delta):
 	attack_timer -= delta
 	if attack_timer <= 0:
 		aoe_area.disabled = true
-		
+		is_aoe = false
 		player.change_state("IdleState")
 func aoe_attack():
 	aoe_area.disabled = false
 
 func _on_aoe_attack_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("Enemy") and is_aoe:
 		body.health -= aoe_damage
