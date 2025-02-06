@@ -1,6 +1,6 @@
 extends PlayerState
 
-var attack_duration : float = 1
+var attack_duration : float = 1.5
 var attack_timer : float = 0.0
 
 func enter_state(player_node):

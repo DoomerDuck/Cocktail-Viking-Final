@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://bhotbq4v6iouu"]
+[gd_scene load_steps=121 format=3 uid="uid://bhotbq4v6iouu"]
 
 [ext_resource type="Script" path="res://StateMachine/player_state_controller.gd" id="1_a26pe"]
 [ext_resource type="Texture2D" uid="uid://dtvqc8mftv0lg" path="res://Character Art/Viking-Sheet.png" id="2_j8rjs"]
@@ -454,6 +454,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_v704r")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_v704r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v704r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v704r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v704r")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5vl04")
 }, {
 "duration": 1.0,
@@ -574,6 +586,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rgruq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8hki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgruq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8hki")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v8hki")
@@ -813,14 +834,21 @@ animations = [{
 radius = 24.0
 height = 88.0
 
-[node name="PlayerStateController" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2mte"]
+size = Vector2(41, 79)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3wh5"]
+radius = 295.002
+
+[node name="PlayerStateController" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 2
 script = ExtResource("1_a26pe")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2.07)
 sprite_frames = SubResource("SpriteFrames_6edii")
-animation = &"attack_range"
+animation = &"attack_melee_air"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -856,3 +884,32 @@ script = ExtResource("11_lsyw0")
 
 [node name="BuffingState" type="Node" parent="."]
 script = ExtResource("12_ix6lf")
+
+[node name="MeleeAttackAreaRight" type="Area2D" parent="."]
+
+[node name="RightMelee" type="CollisionShape2D" parent="MeleeAttackAreaRight"]
+position = Vector2(42.5, 5.5)
+shape = SubResource("RectangleShape2D_j2mte")
+disabled = true
+
+[node name="MeleeAttackAreaLeft" type="Area2D" parent="."]
+position = Vector2(-93, 0)
+
+[node name="LeftMelee" type="CollisionShape2D" parent="MeleeAttackAreaLeft"]
+position = Vector2(43.5, 5.5)
+shape = SubResource("RectangleShape2D_j2mte")
+disabled = true
+
+[node name="AOEAttackArea" type="Area2D" parent="."]
+
+[node name="AOE" type="CollisionShape2D" parent="AOEAttackArea"]
+shape = SubResource("CircleShape2D_m3wh5")
+disabled = true
+
+[connection signal="body_entered" from="MeleeAttackAreaRight" to="AttackingState" method="_on_melee_attack_area_right_body_entered"]
+[connection signal="body_entered" from="MeleeAttackAreaRight" to="JumpAttackState" method="_on_melee_attack_area_right_body_entered"]
+[connection signal="body_entered" from="MeleeAttackAreaRight" to="MoveAttackState" method="_on_melee_attack_area_right_body_entered"]
+[connection signal="body_entered" from="MeleeAttackAreaLeft" to="AttackingState" method="_on_melee_attack_area_left_body_entered"]
+[connection signal="body_entered" from="MeleeAttackAreaLeft" to="JumpAttackState" method="_on_melee_attack_area_left_body_entered"]
+[connection signal="body_entered" from="MeleeAttackAreaLeft" to="MoveAttackState" method="_on_melee_attack_area_left_body_entered"]
+[connection signal="body_entered" from="AOEAttackArea" to="AttackingAOE" method="_on_aoe_attack_area_body_entered"]

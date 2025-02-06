@@ -10,6 +10,7 @@ size = Vector2(1202, 20)
 
 [node name="Floor" type="CharacterBody2D" parent="."]
 position = Vector2(581, 650)
+collision_layer = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor"]
 scale = Vector2(9.40625, 0.1875)
