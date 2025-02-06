@@ -3,6 +3,7 @@ extends PlayerState
 var dash_speed = 1000 #how fast is the dash
 var dash_duration = 0.2 #how long is the dash
 var dash_timer = 0.0 #track dash duration
+@onready var timer = $DashTimer
 
 func enter_state(player_node):
 	super(player_node)
@@ -12,7 +13,12 @@ func enter_state(player_node):
 	player.velocity.x = direction * dash_speed
 	dash_timer = dash_duration
 	player.play_animation("dash")
+	player.remove_from_group("Player")
+	player.stamina -= 10
+	timer.start()
 	
+	
+
 func handle_input(delta):
 	dash_timer -= delta
 	if dash_timer <= 0:
@@ -20,3 +26,7 @@ func handle_input(delta):
 			player.change_state("MovingState")
 		else:
 			player.change_state("IdleState")
+
+
+func _on_dash_timer_timeout() -> void:
+	player.add_to_group("Player")

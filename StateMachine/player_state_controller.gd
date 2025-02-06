@@ -4,6 +4,9 @@ const speed = 300.0
 const jump_velocity = -400
 var current_state
 var last_faced_direction = 1
+@export var health : int = 100
+@export var mana : int = 50
+@export var stamina : int = 70
 @onready var player_sprite: AnimatedSprite2D = $Sprite2D
 
 func _ready() -> void:

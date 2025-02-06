@@ -851,7 +851,7 @@ sprite_frames = SubResource("SpriteFrames_6edii")
 animation = &"attack_melee_air"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerCollisionFloor" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 15)
 shape = SubResource("CapsuleShape2D_6jobm")
 
@@ -866,6 +866,10 @@ script = ExtResource("5_d7878")
 
 [node name="DashingState" type="Node" parent="."]
 script = ExtResource("6_bi82b")
+
+[node name="DashTimer" type="Timer" parent="DashingState"]
+wait_time = 0.3
+one_shot = true
 
 [node name="AttackingState" type="Node" parent="."]
 script = ExtResource("7_cjse1")
@@ -912,6 +916,8 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_m3wh5")
 disabled = true
 
+[connection signal="animation_finished" from="Sprite2D" to="DashingState" method="_on_sprite_2d_animation_finished"]
+[connection signal="timeout" from="DashingState/DashTimer" to="DashingState" method="_on_dash_timer_timeout"]
 [connection signal="body_entered" from="MeleeAttackAreaRight" to="AttackingState" method="_on_melee_attack_area_right_body_entered"]
 [connection signal="body_entered" from="MeleeAttackAreaRight" to="JumpAttackState" method="_on_melee_attack_area_right_body_entered"]
 [connection signal="body_entered" from="MeleeAttackAreaRight" to="MoveAttackState" method="_on_melee_attack_area_right_body_entered"]

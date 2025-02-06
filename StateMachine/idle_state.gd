@@ -10,7 +10,7 @@ func handle_input(_delta):
 		player.change_state("JumpingState")
 	elif Input.get_axis("left","right") != 0:
 		player.change_state("MovingState")
-	elif Input.is_action_just_pressed("dash"):
+	elif Input.is_action_just_pressed("dash") and player.stamina >= 10:
 		player.change_state("DashingState")
 	elif Input.is_action_just_pressed("attack_melee"):
 		player.change_state("AttackingState")
