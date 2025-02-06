@@ -5,7 +5,7 @@ var attack_timer : float = 0.0
 @onready var player_sprite = $"../Sprite2D"
 @onready var aoe_area = $"../AOEAttackArea/AOE"
 var aoe_damage : int = 25
-
+var is_aoe : bool = false
 
 func enter_state(player_node):
 	super(player_node)
@@ -27,4 +27,5 @@ func aoe_attack():
 	aoe_area.disabled = false
 
 func _on_aoe_attack_area_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	if body.is_in_group("Enemy"):
+		body.health -= aoe_damage

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbg4kkomfnr6d"]
+[gd_scene load_steps=5 format=3 uid="uid://bbg4kkomfnr6d"]
 
 [ext_resource type="Texture2D" uid="uid://bm0palsm2lnq3" path="res://icon.svg" id="1_3028h"]
 [ext_resource type="PackedScene" uid="uid://bhotbq4v6iouu" path="res://Player/player.tscn" id="2_4dugo"]
+[ext_resource type="PackedScene" uid="uid://n5yn7g13n114" path="res://Enemies/test_enemy.tscn" id="3_056j1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s4is"]
 size = Vector2(1202, 20)
@@ -23,3 +24,6 @@ shape = SubResource("RectangleShape2D_1s4is")
 position = Vector2(549, 299)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerStateController"]
+
+[node name="test_enemy" parent="." instance=ExtResource("3_056j1")]
+position = Vector2(991, 536)

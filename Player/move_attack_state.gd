@@ -6,7 +6,7 @@ var attack_timer : float = 0.0
 @onready var hitbox_right : CollisionShape2D = $"../MeleeAttackAreaRight/RightMelee"
 @onready var hitbox_left : CollisionShape2D = $"../MeleeAttackAreaLeft/LeftMelee"
 var move_attack_damage : int = 5
-
+var is_move_melee : bool = false
 
 func enter_state(player_node):
 	super(player_node)
@@ -23,15 +23,18 @@ func update_state(delta):
 		player.change_state("IdleState")
 		hitbox_left.disabled = true
 		hitbox_right.disabled = true
-		
+		is_move_melee = false
 func move_attack_melee():
+	is_move_melee = true
 	if player_sprite.flip_h:
 		hitbox_left.disabled = false
 	else:
 		hitbox_right.disabled = false
 		
 func _on_melee_attack_area_right_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	if body.is_in_group("Enemy") and is_move_melee:
+		body.health -= move_attack_damage
 
 func _on_melee_attack_area_left_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	if body.is_in_group("Enemy") and is_move_melee:
+		body.health -= move_attack_damage
