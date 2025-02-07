@@ -5,7 +5,6 @@ var attack_timer : float = 0.0
 @onready var player_sprite = $"../Sprite2D"
 @onready var hitbox_right : CollisionShape2D = $"../MeleeAttackAreaRight/RightMelee"
 @onready var hitbox_left : CollisionShape2D = $"../MeleeAttackAreaLeft/LeftMelee"
-var melee_damage : int = 15
 var is_melee : bool = false
 
 func enter_state(player_node):
@@ -33,8 +32,8 @@ func attack_melee():
 		
 func _on_melee_attack_area_left_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_melee:
-		body.health -= melee_damage
+		body.health -= player.melee_damage
 
 func _on_melee_attack_area_right_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_melee:
-		body.health -= melee_damage
+		body.health -= player.melee_damage

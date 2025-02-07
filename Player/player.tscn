@@ -838,7 +838,7 @@ height = 88.0
 size = Vector2(41, 79)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m3wh5"]
-radius = 295.002
+radius = 217.0
 
 [node name="PlayerStateController" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 2
@@ -883,11 +883,19 @@ script = ExtResource("9_tkyju")
 [node name="AttackingAOE" type="Node" parent="."]
 script = ExtResource("10_7b1y0")
 
+[node name="AOETimer" type="Timer" parent="AttackingAOE"]
+wait_time = 0.5
+one_shot = true
+
 [node name="AttackingRange" type="Node" parent="."]
 script = ExtResource("11_lsyw0")
 
 [node name="BuffingState" type="Node" parent="."]
 script = ExtResource("12_ix6lf")
+
+[node name="Timer" type="Timer" parent="BuffingState"]
+wait_time = 3.0
+one_shot = true
 
 [node name="MeleeAttackAreaRight" type="Area2D" parent="."]
 collision_layer = 3
@@ -918,6 +926,8 @@ disabled = true
 
 [connection signal="animation_finished" from="Sprite2D" to="DashingState" method="_on_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashingState/DashTimer" to="DashingState" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="AttackingAOE/AOETimer" to="AttackingAOE" method="_on_aoe_timer_timeout"]
+[connection signal="timeout" from="BuffingState/Timer" to="BuffingState" method="_on_timer_timeout"]
 [connection signal="body_entered" from="MeleeAttackAreaRight" to="AttackingState" method="_on_melee_attack_area_right_body_entered"]
 [connection signal="body_entered" from="MeleeAttackAreaRight" to="JumpAttackState" method="_on_melee_attack_area_right_body_entered"]
 [connection signal="body_entered" from="MeleeAttackAreaRight" to="MoveAttackState" method="_on_melee_attack_area_right_body_entered"]

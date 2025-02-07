@@ -8,6 +8,10 @@ var last_faced_direction = 1
 @export var mana : int = 50
 @export var stamina : int = 70
 @onready var player_sprite: AnimatedSprite2D = $Sprite2D
+var move_attack_damage : int = 5
+var jump_melee_damage : int = 5
+var melee_damage : int = 15
+var aoe_damage : int = 25
 
 func _ready() -> void:
 	change_state("IdleState")
