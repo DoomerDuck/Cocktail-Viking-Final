@@ -35,8 +35,10 @@ func _on_melee_attack_area_left_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_melee:
 		body.health -= player.melee_damage
 		body.take_damage = true
+		body.damage_taken = player.melee_damage
 
 func _on_melee_attack_area_right_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_melee:
 		body.health -= player.melee_damage
 		body.take_damage = true
+		body.damage_taken = player.melee_damage

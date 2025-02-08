@@ -31,6 +31,7 @@ func _on_aoe_attack_area_body_entered(body: Node2D) -> void:
 		body.health -= player.aoe_damage
 		is_aoe = false
 		body.take_damage = true
+		body.damage_taken = player.aoe_damage
 
 
 func _on_aoe_timer_timeout() -> void:
