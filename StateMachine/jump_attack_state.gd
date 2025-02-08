@@ -35,9 +35,9 @@ func jump_attack_melee():
 func _on_melee_attack_area_right_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_jump_melee:
 		body.health -= player.jump_melee_damage
-		DispayNumber.display_number(player.jump_melee_damage, dno.global_position, false, false, true, false)
+		body.take_damage = true
 
 func _on_melee_attack_area_left_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_jump_melee:
 		body.health -= player.jump_melee_damage
-		DispayNumber.display_number(player.jump_melee_damage, dno.global_position, false, false, true, false)
+		body.take_damage = true

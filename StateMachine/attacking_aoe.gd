@@ -29,8 +29,8 @@ func aoe_attack():
 func _on_aoe_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_aoe:
 		body.health -= player.aoe_damage
-		DispayNumber.display_number(player.aoe_damage, dno.global_position, true, false, false, false)
 		is_aoe = false
+		body.take_damage = true
 
 
 func _on_aoe_timer_timeout() -> void:

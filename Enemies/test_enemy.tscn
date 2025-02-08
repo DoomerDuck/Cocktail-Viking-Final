@@ -20,9 +20,14 @@ texture = ExtResource("2_bhvl2")
 shape = SubResource("RectangleShape2D_x6qvc")
 
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
 
 [node name="HealthBar" parent="." instance=ExtResource("3_yjalq")]
 offset_left = -94.0
 offset_top = -112.0
 offset_right = 106.0
 offset_bottom = -85.0
+
+[node name="dno" type="Node2D" parent="."]
+position = Vector2(2, -49)

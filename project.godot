@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 DispayNumber="*res://Player/dispay_number.gd"
 
+[global_group]
+
+Player=""
+
 [input]
 
 left={

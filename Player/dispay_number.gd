@@ -29,9 +29,9 @@ func display_number(value: int, position: Vector2, is_aoe = false, is_melee = fa
 	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(number, "position:y", number.position.y - 24, 0.5).set_ease(Tween.EASE_OUT)
-	tween.tween_property(number, "position:y", number.position.y, 0.75).set_ease(Tween.EASE_IN).set_delay(0.5)
-	tween.tween_property(number, "scale", Vector2.ZERO, 0.5).set_ease(Tween.EASE_IN).set_delay(0.5)
+	tween.tween_property(number, "position:y", number.position.y - 30, 0.2).set_ease(Tween.EASE_OUT)
+	tween.tween_property(number, "position:y", number.position.y, 0.2).set_ease(Tween.EASE_IN).set_delay(0.2)
+	tween.tween_property(number, "scale", Vector2.ZERO, 0.2).set_ease(Tween.EASE_IN).set_delay(0.2)
 	
 	await tween.finished
 	number.queue_free()
