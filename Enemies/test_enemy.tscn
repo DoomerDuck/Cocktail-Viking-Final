@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://n5yn7g13n114"]
+[gd_scene load_steps=5 format=3 uid="uid://n5yn7g13n114"]
 
 [ext_resource type="Script" path="res://Enemies/test_enemy.gd" id="1_jiy16"]
 [ext_resource type="Texture2D" uid="uid://bm0palsm2lnq3" path="res://icon.svg" id="2_bhvl2"]
+[ext_resource type="PackedScene" uid="uid://dkcyq3t7863v6" path="res://UI/health_bar.tscn" id="3_yjalq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6qvc"]
 size = Vector2(136, 124)
@@ -12,17 +13,16 @@ collision_mask = 3
 script = ExtResource("1_jiy16")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.617918, 0.605987, 0.608973, 1)
 texture = ExtResource("2_bhvl2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_x6qvc")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -43.0
-offset_top = -128.0
-offset_right = 43.0
-offset_bottom = -59.0
-theme_override_font_sizes/font_size = 50
-text = "123"
-
 [node name="Timer" type="Timer" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("3_yjalq")]
+offset_left = -94.0
+offset_top = -112.0
+offset_right = 106.0
+offset_bottom = -85.0

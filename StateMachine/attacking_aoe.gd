@@ -4,6 +4,8 @@ var attack_duration : float = 1.5
 var attack_timer : float = 0.0
 @onready var player_sprite = $"../Sprite2D"
 @onready var aoe_area = $"../AOEAttackArea/AOE"
+var is_aoe : bool = false
+@onready var dno = $"../DamageNumberOrigins"
 
 func enter_state(player_node):
 	super(player_node)
@@ -11,6 +13,7 @@ func enter_state(player_node):
 	player.velocity.x = 0
 	aoe_attack()
 	player.play_animation("attack_aoe")
+	is_aoe = true
 	
 func handle_input(delta):
 	update_state(delta)
@@ -24,9 +27,10 @@ func aoe_attack():
 	$AOETimer.start()
 
 func _on_aoe_attack_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("Enemy") and is_aoe:
 		body.health -= player.aoe_damage
-		print("dmg")
+		DispayNumber.display_number(player.aoe_damage, dno.global_position, true, false, false, false)
+		is_aoe = false
 
 
 func _on_aoe_timer_timeout() -> void:
