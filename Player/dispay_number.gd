@@ -11,9 +11,9 @@ func display_number(value: int, position: Vector2, is_aoe = false, is_melee = fa
 	if is_aoe:
 		color = "B22"
 	if is_melee:
-		color = "#82610f"
+		color = "#7a9bfc"
 	if is_jump_melee:
-		color = "#9e9b9b"
+		color = "#ed801c"
 	if is_move_melee:
 		color = "#9e9b9b"
 		
