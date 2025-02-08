@@ -28,11 +28,11 @@ func aoe_attack():
 
 func _on_aoe_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_aoe:
-		body.health -= player.aoe_damage
+		#body.health -= player.aoe_damage
 		is_aoe = false
 		body.take_damage = true
 		body.damage_taken = player.aoe_damage
-
+		body.take_damage_from_player()
 
 func _on_aoe_timer_timeout() -> void:
 	aoe_area.disabled = false

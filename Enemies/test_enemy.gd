@@ -15,9 +15,10 @@ func _physics_process(_delta: float) -> void:
 	if health <= 0:
 		queue_free()
 	healthbar.health = health
-	take_damage_from_player()
+
 	
 func take_damage_from_player():
 	if take_damage:
+		health -= damage_taken
 		DispayNumber.display_number(damage_taken, dno.global_position, true, false, false, false)
 		take_damage = false

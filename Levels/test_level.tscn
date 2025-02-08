@@ -33,6 +33,9 @@ position = Vector2(549, 299)
 [node name="test_enemy" parent="." instance=ExtResource("3_056j1")]
 position = Vector2(991, 536)
 
+[node name="test_enemy2" parent="." instance=ExtResource("3_056j1")]
+position = Vector2(478, 551)
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(369, 380)
 
