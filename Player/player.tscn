@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://bhotbq4v6iouu"]
+[gd_scene load_steps=122 format=3 uid="uid://bhotbq4v6iouu"]
 
 [ext_resource type="Script" path="res://StateMachine/player_state_controller.gd" id="1_a26pe"]
 [ext_resource type="Texture2D" uid="uid://dtvqc8mftv0lg" path="res://Character Art/Viking-Sheet.png" id="2_j8rjs"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://StateMachine/attacking_aoe.gd" id="10_7b1y0"]
 [ext_resource type="Script" path="res://StateMachine/attacking_range.gd" id="11_lsyw0"]
 [ext_resource type="Script" path="res://StateMachine/buffing_state.gd" id="12_ix6lf"]
+[ext_resource type="Script" path="res://Player/aoe_attack_area.gd" id="13_sok0o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfowq"]
 atlas = ExtResource("2_j8rjs")
@@ -919,6 +920,7 @@ disabled = true
 [node name="AOEAttackArea" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
+script = ExtResource("13_sok0o")
 
 [node name="AOE" type="CollisionShape2D" parent="AOEAttackArea"]
 shape = SubResource("CircleShape2D_m3wh5")

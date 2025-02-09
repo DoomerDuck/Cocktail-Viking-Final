@@ -17,8 +17,8 @@ func _physics_process(_delta: float) -> void:
 	healthbar.health = health
 
 	
-func take_damage_from_player():
+func take_damage_from_player(player_damage):
 	if take_damage:
-		health -= damage_taken
-		DispayNumber.display_number(damage_taken, dno.global_position, true, false, false, false)
+		health -= player_damage
+		#DispayNumber.display_number(player_damage, dno.global_position, true, false, false, false)
 		take_damage = false
