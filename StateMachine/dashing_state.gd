@@ -14,10 +14,7 @@ func enter_state(player_node):
 	dash_timer = dash_duration
 	player.play_animation("dash")
 	player.remove_from_group("Player")
-	player.stamina -= 10
-	timer.start()
-	
-	
+	timer.start()	
 
 func handle_input(delta):
 	dash_timer -= delta
