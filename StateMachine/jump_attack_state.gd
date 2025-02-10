@@ -34,12 +34,14 @@ func jump_attack_melee():
 
 func _on_melee_attack_area_right_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_jump_melee:
-		body.health -= player.jump_melee_damage
+		var player_damage = player.jump_melee_damage
+		body.take_damage_from_player(player_damage)
 		body.take_damage = true
-		body.damage_taken = player.jump_melee_damage
+		body.damage_taken = player_damage
 
 func _on_melee_attack_area_left_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and is_jump_melee:
-		body.health -= player.jump_melee_damage
+		var player_damage = player.jump_melee_damage
+		body.take_damage_from_player(player_damage)
 		body.take_damage = true
-		body.damage_taken = player.jump_melee_damage
+		body.damage_taken = player_damage
