@@ -17,6 +17,7 @@ script = ExtResource("1_tgtvs")
 [node name="Floor" type="CharacterBody2D" parent="."]
 position = Vector2(581, 650)
 collision_layer = 3
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor"]
 scale = Vector2(9.40625, 0.1875)
@@ -31,19 +32,10 @@ position = Vector2(549, 299)
 [node name="Camera2D" type="Camera2D" parent="PlayerStateController"]
 
 [node name="test_enemy" parent="." instance=ExtResource("3_056j1")]
-position = Vector2(934, 533)
+position = Vector2(934, 531)
 
 [node name="test_enemy2" parent="." instance=ExtResource("3_056j1")]
-position = Vector2(842, 540)
-
-[node name="test_enemy3" parent="." instance=ExtResource("3_056j1")]
-position = Vector2(537, 545)
-
-[node name="test_enemy4" parent="." instance=ExtResource("3_056j1")]
-position = Vector2(827, 486)
-
-[node name="test_enemy5" parent="." instance=ExtResource("3_056j1")]
-position = Vector2(766, 545)
+position = Vector2(1039, 548)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(369, 380)

@@ -6,7 +6,6 @@ var attack_timer : float = 0.0
 @onready var hitbox_right : CollisionShape2D = $"../MeleeAttackAreaRight/RightMelee"
 @onready var hitbox_left : CollisionShape2D = $"../MeleeAttackAreaLeft/LeftMelee"
 var is_melee : bool = false
-@onready var dno = $"../DamageNumberOrigins"
 
 func enter_state(player_node):
 	super(player_node)

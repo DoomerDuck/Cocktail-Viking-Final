@@ -28,7 +28,7 @@ func aoe_attack():
 	$AOETimer.start()
 
 func _on_aoe_attack_area_body_entered(_body: Node2D) -> void:
-		$"../AOEAttackArea".aoe_attack()
+		hurtbox.aoe_attack()
 		hurtbox.player_damage = player.aoe_damage
 		is_aoe = true
 	#if body.is_in_group("Enemy") and is_aoe:
