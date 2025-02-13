@@ -22,6 +22,7 @@ DispayNumber="*res://Player/dispay_number.gd"
 [global_group]
 
 Player=""
+Enemy=""
 
 [input]
 

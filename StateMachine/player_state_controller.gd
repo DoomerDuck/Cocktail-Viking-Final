@@ -15,6 +15,7 @@ var aoe_damage : int = 25
 
 func _ready() -> void:
 	change_state("IdleState")
+	add_to_group("Player")
 	
 func change_state(new_state_name: String):
 	if current_state:
