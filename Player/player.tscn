@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://bhotbq4v6iouu"]
+[gd_scene load_steps=123 format=3 uid="uid://bhotbq4v6iouu"]
 
 [ext_resource type="Script" path="res://StateMachine/player_state_controller.gd" id="1_a26pe"]
 [ext_resource type="Texture2D" uid="uid://dtvqc8mftv0lg" path="res://Character Art/Viking-Sheet.png" id="2_j8rjs"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://StateMachine/attacking_range.gd" id="11_lsyw0"]
 [ext_resource type="Script" path="res://StateMachine/buffing_state.gd" id="12_ix6lf"]
 [ext_resource type="Script" path="res://StateMachine/aoe_attack_area.gd" id="13_sok0o"]
+[ext_resource type="Script" path="res://Player/hurt_state.gd" id="14_7xl5q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfowq"]
 atlas = ExtResource("2_j8rjs")
@@ -842,7 +843,7 @@ size = Vector2(41, 79)
 radius = 217.0
 
 [node name="PlayerStateController" type="CharacterBody2D" groups=["Player"]]
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_a26pe")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -930,6 +931,14 @@ disabled = true
 position = Vector2(-7, -70)
 scale = Vector2(2, 2.07)
 
+[node name="HurtState" type="Node" parent="."]
+script = ExtResource("14_7xl5q")
+
+[node name="Timer" type="Timer" parent="HurtState"]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
 [connection signal="animation_finished" from="Sprite2D" to="DashingState" method="_on_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashingState/DashTimer" to="DashingState" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="AttackingAOE/AOETimer" to="AttackingAOE" method="_on_aoe_timer_timeout"]
@@ -941,3 +950,4 @@ scale = Vector2(2, 2.07)
 [connection signal="body_entered" from="MeleeAttackAreaLeft" to="JumpAttackState" method="_on_melee_attack_area_left_body_entered"]
 [connection signal="body_entered" from="MeleeAttackAreaLeft" to="MoveAttackState" method="_on_melee_attack_area_left_body_entered"]
 [connection signal="body_entered" from="AOEAttackArea" to="AttackingAOE" method="_on_aoe_attack_area_body_entered"]
+[connection signal="timeout" from="HurtState/Timer" to="HurtState" method="_on_timer_timeout"]

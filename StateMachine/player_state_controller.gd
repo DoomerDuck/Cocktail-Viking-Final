@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 const speed = 300.0
 const jump_velocity = -400
 var current_state
@@ -12,6 +14,7 @@ var move_attack_damage : int = 5
 var jump_melee_damage : int = 5
 var melee_damage : int = 15
 var aoe_damage : int = 25
+var player_take_damage : bool = false
 
 func _ready() -> void:
 	change_state("IdleState")
@@ -45,3 +48,7 @@ func _physics_process(delta: float) -> void:
 
 func play_animation(animation_name):
 	player_sprite.play(animation_name)
+
+func take_damage(damage):
+	player_health -= damage
+	print(player_health)

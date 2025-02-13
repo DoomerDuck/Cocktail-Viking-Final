@@ -22,3 +22,5 @@ func handle_input(_delta):
 		player.change_state("AttackingRange")
 	elif Input.is_action_just_pressed("buff") and player.is_on_floor():
 		player.change_state("BuffingState")
+	elif player.player_take_damage:
+		player.change_state("HurtState")
