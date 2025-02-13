@@ -72,7 +72,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		$Attack.enabled = false
 		await anim.animation_finished
 		body.player_take_damage = false
-		can_move = true
+		anim.play("idle")
 		$Timer.start()
 
 func raycast_range_detection():
@@ -84,4 +84,6 @@ func raycast_range_detection():
 
 
 func _on_timer_timeout() -> void:
+	await anim.animation_finished
 	$Attack.enabled = true
+	can_move = true
